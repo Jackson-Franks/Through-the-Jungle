@@ -1,0 +1,76 @@
+/* h2 {
+    text-align: center;
+}
+h3 {
+    text-align: center;
+}
+
+#startButton {
+    text-align: center;
+} */
+
+
+
+body {
+    text-align: center;
+}
+
+#gameOn {
+    display: none;
+}
+
+/* #game {
+    max-width: 40em;
+    /* background-color: black; */
+    /* margin: auto;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:    "out-left finishline finishline finishline finishline out-right"
+                            "out-left board1 board1 board1 board1 out-right"
+                            "out-left board2 board2 board2 board2 out-right"
+                            "out-left board3 board3 board3 board3 out-right"
+                            "out-left startline startline startline startline out-right";
+}
+
+#out-left {
+    grid-area: out-left;
+    background-color: cadetblue;
+}
+
+#finishline {
+    grid-area: finishline;
+    background-color: black;
+}
+
+#out-right {
+    grid-area: out-right;
+    background-color: cadetblue;
+}
+
+#board1 {
+    grid-area: board1;
+    background-color: crimson;
+}
+
+#board2 {
+    grid-area: board2;
+    background-color: grey;
+}
+
+#board3 {
+    grid-area: board3;
+    background-color: khaki;
+}
+
+#startline {
+    grid-area: startline;
+    background-color: lawngreen;
+} */ 
+
+#game {
+    height: 75vh;
+    width: 60vw;
+    border: black;
+
+}
