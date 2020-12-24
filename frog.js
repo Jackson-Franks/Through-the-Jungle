@@ -123,6 +123,7 @@ function moveArrowRight() {
     }
 }
 
+
 function moveFireLeft() {
     fireone.x -=2
     firetwo.x -=2
@@ -135,6 +136,76 @@ function moveFireLeft() {
     }
     if (firethree.x + firethree.width <= 0){
         firethree.x=385
+    }
+}
+
+
+function moveBallRight() {
+    ballone.x +=2
+    balltwo.x +=2
+    ballthree.x +=2
+    ballfour.x +=2
+    ballfive.x +=2
+    if (ballone.x + ballone.width >= 385){
+        ballone.x=0
+    }
+    if (balltwo.x + balltwo.width >= 385){
+        balltwo.x=0
+    }
+    if (ballthree.x + ballthree.width >= 385){
+        ballthree.x=0
+    }
+    if (ballfour.x + ballfour.width >= 385){
+        ballfour.x=0
+    }
+    if (ballfive.x + ballfive.width >= 385){
+        ballfive.x=0
+    }
+}
+
+function moveBallLeft() {
+    ballsix.x -=1
+    ballseven.x -=1
+    balleight.x -=1
+    ballnine.x -=1
+    ballten.x -=1
+    if (ballsix.x + ballsix.width <= 0){
+        ballsix.x=385
+    }
+    if (ballseven.x + ballseven.width <= 0){
+        ballseven.x=385
+    }
+    if (balleight.x + balleight.width <= 0){
+        balleight.x=385
+    }
+    if (ballnine.x + ballnine.width <= 0){
+        ballnine.x=385
+    }
+    if (ballten.x + ballten.width <= 0){
+        ballten.x=385
+    }
+}
+
+function moveKnifeRight() {
+    knifeone.x +=.5
+    knifetwo.x +=.5
+    knifethree.x +=.5
+    knifefour.x +=.5
+    knifefive.x +=.5
+    if (knifeone.x + knifeone.width >= 385){
+        knifeone.x=0
+    }
+    if (knifetwo.x + knifetwo.width >= 385){
+        knifetwo.x=0
+    }
+    if (knifethree.x + knifethree.width >= 385){
+        knifethree.x=0
+    }
+    if (knifefour.x + knifefour.width >= 385){
+        knifefour.x=0
+    }
+    if (knifefive.x + knifefive.width >= 385){
+        knifefive.x=0
     }
 }
 
@@ -159,16 +230,19 @@ let gameLoop = () => {
     fireone.render()
     firetwo.render()
     firethree.render()
+    moveBallRight()
     ballone.render()
     balltwo.render()
     ballthree.render()
     ballfour.render()
     ballfive.render()
+    moveBallLeft()
     ballsix.render()
     ballseven.render()
     balleight.render()
     ballnine.render()
     ballten.render()
+    moveKnifeRight()
     knifeone.render()
     knifetwo.render()
     knifethree.render()
