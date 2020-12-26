@@ -209,9 +209,32 @@ function moveKnifeRight() {
     }
 }
 
+function moveKnifeLeft() {
+    knifesix.x -=1.5
+    knifeseven.x -=1.5
+    knifeeight.x -=1.5
+    knifenine.x -=1.5
+    knifeten.x -=1.5
+    if (knifesix.x + knifesix.width <= 0){
+        knifesix.x=385
+    }
+    if (knifeseven.x + knifeseven.width <= 0){
+        knifeseven.x=385
+    }
+    if (knifeeight.x + knifeeight.width <= 0){
+        knifeeight.x=385
+    }
+    if (knifenine.x + knifenine.width <= 0){
+        knifenine.x=385
+    }
+    if (knifeten.x + knifeten.width <= 0){
+        knifeten.x=385
+    }
+}
+
 let gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height)
-    character.render()
+    
     moveCarLeft()
     carone.render() 
     cartwo.render()
@@ -248,13 +271,174 @@ let gameLoop = () => {
     knifethree.render()
     knifefour.render()
     knifefive.render()
+    moveKnifeLeft()
     knifesix.render()
     knifeseven.render()
     knifeeight.render()
     knifenine.render()
     knifeten.render()
     finish.render()
+    if (character.alive) {
+        character.render()
+        detectHit()
+        detectHitTwo()
+        detectHitThree()
+        detectHitFour()
+        detectHitFive()
+        detectHitSix()
+        detectHitSeven()
+        detectHitEight()
+        detectHitNine()
+        detectHitTen()
+        detectHitEleven()
+        detectHitTwelve()
+    }
 }
+
+// detect hit
+let detectHit = () => {
+    if (
+        character.x + character.width > carone.x &&
+        character.x < carone.x + carone.width &&
+        character.y < carone.y + carone.height &&
+        character.y + character.height > carone.y
+    ) {
+        character.alive = false
+        document.getElementById('dead').innerText = 'You were splattered by car one'
+    }
+    }
+
+let detectHitTwo = () => {
+    if (
+        character.x + character.width > cartwo.x &&
+        character.x < cartwo.x + cartwo.width &&
+        character.y < cartwo.y + cartwo.height &&
+        character.y + character.height > cartwo.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were splattered by car two'
+    }
+    }
+
+let detectHitThree = () => {
+    if (
+        character.x + character.width > carthree.x &&
+        character.x < carthree.x + carthree.width &&
+        character.y < carthree.y + carthree.height &&
+        character.y + character.height > carthree.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were splattered by car three'
+    }
+    }
+    
+let detectHitFour = () => {
+    if (
+        character.x + character.width > arrowone.x &&
+        character.x < arrowone.x + arrowone.width &&
+        character.y < arrowone.y + arrowone.height &&
+        character.y + character.height > arrowone.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow one'
+     }
+    }
+
+let detectHitFive = () => {
+    if (
+        character.x + character.width > arrowtwo.x &&
+        character.x < arrowtwo.x + arrowtwo.width &&
+        character.y < arrowtwo.y + arrowtwo.height &&
+        character.y + character.height > arrowtwo.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitSix = () => {
+    if (
+        character.x + character.width > arrowthree.x &&
+        character.x < arrowthree.x + arrowthree.width &&
+        character.y < arrowthree.y + arrowthree.height &&
+        character.y + character.height > arrowthree.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+    let detectHitSeven = () => {
+        if (
+            character.x + character.width > arrowfour.x &&
+            character.x < arrowfour.x + arrowfour.width &&
+            character.y < arrowfour.y + arrowfour.height &&
+            character.y + character.height > arrowfour.y
+            ) {
+                character.alive = false
+                document.getElementById('dead').innerText = 'You were sniped by arrow two'
+        }
+        }
+
+let detectHitEight = () => {
+        if (
+        character.x + character.width > arrowfive.x &&
+        character.x < arrowfive.x + arrowfive.width &&
+        character.y < arrowfive.y + arrowfive.height &&
+        character.y + character.height > arrowfive.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitNine = () => {
+    if (
+        character.x + character.width > lavaone.x &&
+        character.x < lavaone.x + lavaone.width &&
+        character.y < lavaone.y + lavaone.height &&
+        character.y + character.height > lavaone.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitTen = () => {
+    if (
+        character.x + character.width > lavatwo.x &&
+        character.x < lavatwo.x + lavatwo.width &&
+        character.y < lavatwo.y + lavatwo.height &&
+        character.y + character.height > lavatwo.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitEleven = () => {
+    if (
+        character.x + character.width > lavathree.x &&
+        character.x < lavathree.x + lavathree.width &&
+        character.y < lavathree.y + lavathree.height &&
+        character.y + character.height > lavathree.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitTwelve = () => {
+    if (
+        character.x + character.width > lavafour.x &&
+        character.x < lavafour.x + lavafour.width &&
+        character.y < lavafour.y + lavafour.height &&
+        character.y + character.height > lavafour.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
 
 let movementHandler = e => {
     switch(e.key) {
