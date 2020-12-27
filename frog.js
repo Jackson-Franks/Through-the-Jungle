@@ -292,6 +292,28 @@ let gameLoop = () => {
         detectHitTen()
         detectHitEleven()
         detectHitTwelve()
+        detectHitThirteen()
+        detectHitFourteen()
+        detectHitFifteen()
+        detectHitSixteen()
+        detectHitSeventeen()
+        detectHitEightteen()
+        detectHitNineteen()
+        detectHitTwenty()
+        detectHitTwentytwo()
+        detectHitTwentythree()
+        detectHitTwentyfour()
+        detectHitTwentyfive()
+        detectHitTwentysix()
+        detectHitTwentyseven()
+        detectHitTwentyeight()
+        detectHitTwentynine()
+        detectHitThirty()
+        detectHitThirtyone()
+        detectHitThirtytwo()
+        detectHitThirtythree()
+        detectHitThirtyfour()
+        detectHitThirtyfive()
     }
 }
 
@@ -434,6 +456,282 @@ let detectHitTwelve = () => {
         character.x < lavafour.x + lavafour.width &&
         character.y < lavafour.y + lavafour.height &&
         character.y + character.height > lavafour.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitThirteen = () => {
+    if (
+        character.x + character.width > fireone.x &&
+        character.x < fireone.x + fireone.width &&
+        character.y < fireone.y + fireone.height &&
+        character.y + character.height > fireone.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitFourteen = () => {
+    if (
+        character.x + character.width > firetwo.x &&
+        character.x < firetwo.x + firetwo.width &&
+        character.y < firetwo.y + firetwo.height &&
+        character.y + character.height > firetwo.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitFifteen = () => {
+    if (
+        character.x + character.width > firethree.x &&
+        character.x < firethree.x + firethree.width &&
+        character.y < firethree.y + firethree.height &&
+        character.y + character.height > firethree.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitSixteen = () => {
+    if (
+        character.x + character.width > ballone.x &&
+        character.x < ballone.x + ballone.width &&
+        character.y < ballone.y + ballone.height &&
+        character.y + character.height > ballone.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitSeventeen = () => {
+    if (
+        character.x + character.width > balltwo.x &&
+        character.x < balltwo.x + balltwo.width &&
+        character.y < balltwo.y + balltwo.height &&
+        character.y + character.height > balltwo.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitEightteen = () => {
+    if (
+        character.x + character.width > ballthree.x &&
+        character.x < ballthree.x + ballthree.width &&
+        character.y < ballthree.y + ballthree.height &&
+        character.y + character.height > ballthree.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitNineteen = () => {
+    if (
+        character.x + character.width > ballfour.x &&
+        character.x < ballfour.x + ballfour.width &&
+        character.y < ballfour.y + ballfour.height &&
+        character.y + character.height > ballfour.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitTwenty = () => {
+    if (
+        character.x + character.width > ballfive.x &&
+        character.x < ballfive.x + ballfive.width &&
+        character.y < ballfive.y + ballfive.height &&
+        character.y + character.height > ballfive.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitTwentyone = () => {
+    if (
+        character.x + character.width > ballsix.x &&
+        character.x < ballsix.x + ballsix.width &&
+        character.y < ballsix.y + ballsix.height &&
+        character.y + character.height > ballsix.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitTwentytwo = () => {
+    if (
+        character.x + character.width > ballseven.x &&
+        character.x < ballseven.x + ballseven.width &&
+        character.y < ballseven.y + ballseven.height &&
+        character.y + character.height > ballseven.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitTwentythree = () => {
+    if (
+        character.x + character.width > balleight.x &&
+        character.x < balleight.x + balleight.width &&
+        character.y < balleight.y + balleight.height &&
+        character.y + character.height > balleight.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitTwentyfour = () => {
+    if (
+        character.x + character.width > ballnine.x &&
+        character.x < ballnine.x + ballnine.width &&
+        character.y < ballnine.y + ballnine.height &&
+        character.y + character.height > ballnine.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitTwentyfive = () => {
+    if (
+        character.x + character.width > ballten.x &&
+        character.x < ballten.x + ballten.width &&
+        character.y < ballten.y + ballten.height &&
+        character.y + character.height > ballten.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitTwentysix = () => {
+    if (
+        character.x + character.width > knifeone.x &&
+        character.x < knifeone.x + knifeone.width &&
+        character.y < knifeone.y + knifeone.height &&
+        character.y + character.height > knifeone.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitThirtyfive = () => {
+    if (
+        character.x + character.width > knifetwo.x &&
+        character.x < knifetwo.x + knifetwo.width &&
+        character.y < knifetwo.y + knifetwo.height &&
+        character.y + character.height > knifetwo.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitTwentyseven = () => {
+    if (
+        character.x + character.width > knifethree.x &&
+        character.x < knifethree.x + knifethree.width &&
+        character.y < knifethree.y + knifethree.height &&
+        character.y + character.height > knifethree.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitTwentyeight = () => {
+    if (
+        character.x + character.width > knifefour.x &&
+        character.x < knifefour.x + knifefour.width &&
+        character.y < knifefour.y + knifefour.height &&
+        character.y + character.height > knifefour.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitTwentynine = () => {
+    if (
+        character.x + character.width > knifefive.x &&
+        character.x < knifefive.x + knifefive.width &&
+        character.y < knifefive.y + knifefive.height &&
+        character.y + character.height > knifefive.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitThirty = () => {
+    if (
+        character.x + character.width > knifesix.x &&
+        character.x < knifesix.x + knifesix.width &&
+        character.y < knifesix.y + knifesix.height &&
+        character.y + character.height > knifesix.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitThirtyone = () => {
+    if (
+        character.x + character.width > knifeseven.x &&
+        character.x < knifeseven.x + knifeseven.width &&
+        character.y < knifeseven.y + knifeseven.height &&
+        character.y + character.height > knifeseven.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitThirtytwo = () => {
+    if (
+        character.x + character.width > knifeeight.x &&
+        character.x < knifeeight.x + knifeeight.width &&
+        character.y < knifeeight.y + knifeeight.height &&
+        character.y + character.height > knifeeight.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitThirtythree = () => {
+    if (
+        character.x + character.width > knifenine.x &&
+        character.x < knifenine.x + knifenine.width &&
+        character.y < knifenine.y + knifenine.height &&
+        character.y + character.height > knifenine.y
+        ) {
+            character.alive = false
+            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+    }
+    }
+
+let detectHitThirtyfour = () => {
+    if (
+        character.x + character.width > knifeten.x &&
+        character.x < knifeten.x + knifeten.width &&
+        character.y < knifeten.y + knifeten.height &&
+        character.y + character.height > knifeten.y
         ) {
             character.alive = false
             document.getElementById('dead').innerText = 'You were sniped by arrow two'
