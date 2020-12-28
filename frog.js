@@ -4,6 +4,7 @@ let start = document.getElementById('start')
 let gameOn = document.getElementById('gameOn')
 let movementDisplay = document.getElementById('movement')
 let game = document.getElementById('game')
+let retry = document.getElementById('retrybutton')
 
 // character movement
 game.setAttribute('width', getComputedStyle(game)['width'])
@@ -39,7 +40,7 @@ function Enemy(x, y, color, width, height) {
 }
 
 // characters/obstacles
-let character = new Crawler(175, 700, 'green', 20, 20)
+let character = new Crawler(190, 700, 'green', 20, 20)
 
 let carone = new Enemy(162, 600, 'red', 50, 30)
 let cartwo = new Enemy(25, 600, 'red', 50, 30)
@@ -51,10 +52,11 @@ let arrowthree = new Enemy(175, 500, 'red', 30, 10)
 let arrowfour = new Enemy(250, 500, 'red', 30, 10)
 let arrowfive = new Enemy(325, 500, 'red', 30, 10)
 
-let lavaone = new Enemy(300, 300, 'red', 70, 80)
-let lavatwo = new Enemy(200, 300, 'red', 70, 80)
-let lavathree = new Enemy(100, 300, 'red', 70, 80)
-let lavafour = new Enemy(0, 300, 'red', 70, 80)
+let lavaone = new Enemy(260, 300, 'red', 150, 80)
+let lavafour = new Enemy(0, 300, 'red', 150, 80)
+let lavatwo = new Enemy(260, 300, 'pink', 70, 80)
+let lavathree = new Enemy(50, 300, 'pink', 70, 80)
+
 
 let fireone = new Enemy(0, 275, 'red', 130, 10)
 let firetwo = new Enemy(178, 265, 'red', 15, 30)
@@ -232,6 +234,20 @@ function moveKnifeLeft() {
     }
 }
 
+function moveLavaTwoLeft() {
+    lavatwo.x -=.3
+    if (lavatwo.x <= 190){
+        lavatwo.x=260
+    }
+}
+
+function moveLavaFourLeft() {
+    lavathree.x +=.3
+    if (lavathree.x >= 120){
+        lavathree.x=50
+    }
+}
+
 let gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height)
     
@@ -246,6 +262,8 @@ let gameLoop = () => {
     arrowfour.render()
     arrowfive.render()
     moveFireLeft()
+    moveLavaTwoLeft()
+    moveLavaFourLeft()
     lavaone.render()
     lavatwo.render()
     lavathree.render()
@@ -773,4 +791,12 @@ startButton.addEventListener('click', e => {
     gameOn.style.display = 'inline-block'
 })
 
-// making enemies move
+// retry after death
+
+retry.addEventListener('click', e => {
+    e.preventDefault()
+    character.alive = true
+    character.x = 175
+    character.y = 700
+    document.getElementById('dead').innerText = ''
+})
