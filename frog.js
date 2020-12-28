@@ -6,6 +6,30 @@ let movementDisplay = document.getElementById('movement')
 let game = document.getElementById('game')
 let retry = document.getElementById('retrybutton')
 
+//images
+let characterImg = new Image()
+characterImg.src = 'img/bill_rizer__contra__by_miniman487_d6l3dv1-fullview.png'
+console.log(characterImg)
+let arrowImg = new Image()
+arrowImg.src = 'img/unnamed-2.png'
+let lavaImg = new Image()
+lavaImg.src = 'img/Screen Shot 2020-12-28 at 3.33.55 PM.png'
+let knifeLImg = new Image()
+knifeLImg.src = "img/Script-Online-DICE-CHEF'S-KNIFE-300-MM-52151702SD00116-PDP-Gallery-D-01.png"
+let knifeRImg = new Image()
+knifeRImg.src = "img/Script-Online-DICE-CHEF'S-KNIFE-300-MM-52151702SD00116-PDP-Gallery-D-01 copy.png"
+let carImg = new Image()
+carImg.src = 'img/unnamed.png'
+let ballImg = new Image()
+ballImg.src = 'img/fireball-clipart-transparent-background-4.png'
+let fireImg = new Image()
+fireImg.src = 'img/27438-3-fire-flame-transparent-background.png'
+let finishImg = new Image()
+finishImg.src = 'img/unnamed-1.png'
+let ballLImg = new Image ()
+ballLImg.src = 'img/fireball-clipart-transparent-background-4 copy.png'
+
+
 // character movement
 game.setAttribute('width', getComputedStyle(game)['width'])
 game.setAttribute('height', getComputedStyle(game)['height'])
@@ -13,78 +37,75 @@ game.setAttribute('height', getComputedStyle(game)['height'])
 let ctx = game.getContext('2d')
 
 //replace color with img, delete fillStyle, replace fillRect w drawImage
-function Crawler(x, y, color, width, height) {
+function Crawler(x, y, width, height, img) {
     this.x = x
     this.y = y
-    this.color = color
+    this.img = img
     this.width = width
     this.height = height
     this.alive = true
     this.render = function() {
-        ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.width, this.height)
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
     }
 }
 
-function Enemy(x, y, color, width, height) {
+function Enemy(x, y, width, height, img) {
     this.x = x
     this.y = y
-    this.color = color
+    this.img = img
     this.width = width
     this.height = height
     this.alive = true
     this.render = function() {
-        ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.width, this.height)
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
     }
 }
 
 // characters/obstacles
-let character = new Crawler(190, 700, 'green', 20, 20)
+let character = new Crawler(190, 700, 20, 30, characterImg)
 
-let carone = new Enemy(162, 600, 'red', 50, 30)
-let cartwo = new Enemy(25, 600, 'red', 50, 30)
-let carthree = new Enemy(300, 600, 'red', 50, 30)
+let carone = new Enemy(162, 600, 50, 30, carImg)
+let cartwo = new Enemy(25, 600, 50, 30, carImg)
+let carthree = new Enemy(300, 600, 50, 30, carImg)
 
-let arrowone = new Enemy(25, 500, 'red', 30, 10)
-let arrowtwo = new Enemy(100, 500, 'red', 30, 10)
-let arrowthree = new Enemy(175, 500, 'red', 30, 10)
-let arrowfour = new Enemy(250, 500, 'red', 30, 10)
-let arrowfive = new Enemy(325, 500, 'red', 30, 10)
+let arrowone = new Enemy(25, 500, 30, 20, arrowImg)
+let arrowtwo = new Enemy(100, 500, 30, 20, arrowImg)
+let arrowthree = new Enemy(175, 500, 30, 20, arrowImg)
+let arrowfour = new Enemy(250, 500, 30, 20, arrowImg)
+let arrowfive = new Enemy(325, 500, 30, 20, arrowImg)
 
-let lavaone = new Enemy(260, 300, 'red', 150, 80)
-let lavafour = new Enemy(0, 300, 'red', 150, 80)
-let lavatwo = new Enemy(260, 300, 'pink', 70, 80)
-let lavathree = new Enemy(50, 300, 'pink', 70, 80)
+let lavaone = new Enemy(260, 300, 150, 80, lavaImg)
+let lavafour = new Enemy(0, 300, 120, 80, lavaImg)
+let lavatwo = new Enemy(260, 300,  70, 80, lavaImg)
+let lavathree = new Enemy(50, 300,  70, 80, lavaImg)
 
 
-let fireone = new Enemy(0, 275, 'red', 130, 10)
-let firetwo = new Enemy(178, 265, 'red', 15, 30)
-let firethree = new Enemy(240, 275, 'red', 130, 10)
+let fireone = new Enemy(0, 260, 200, 30, fireImg)
+let firethree = new Enemy(240, 260, 200, 30, fireImg)
 
-let ballone = new Enemy(340, 200, 'red', 40, 20)
-let balltwo = new Enemy(260, 200, 'red', 40, 20)
-let ballthree = new Enemy(180, 200, 'red', 40, 20)
-let ballfour = new Enemy(100, 200, 'red', 40, 20)
-let ballfive = new Enemy(20, 200, 'red', 40, 20)
-let ballsix = new Enemy(320, 170, 'red', 40, 20)
-let ballseven = new Enemy(240, 170, 'red', 40, 20)
-let balleight = new Enemy(160, 170, 'red', 40, 20)
-let ballnine = new Enemy(80, 170, 'red', 40, 20)
-let ballten = new Enemy(0, 170, 'red', 40, 20)
+let ballone = new Enemy(340, 200, 40, 20, ballImg)
+let balltwo = new Enemy(260, 200, 40, 20, ballImg)
+let ballthree = new Enemy(180, 200, 40, 20, ballImg)
+let ballfour = new Enemy(100, 200, 40, 20, ballImg)
+let ballfive = new Enemy(20, 200, 40, 20, ballImg)
+let ballsix = new Enemy(320, 170, 40, 20, ballLImg)
+let ballseven = new Enemy(240, 170, 40, 20, ballLImg)
+let balleight = new Enemy(160, 170, 40, 20, ballLImg)
+let ballnine = new Enemy(80, 170, 40, 20, ballLImg)
+let ballten = new Enemy(0, 170, 40, 20, ballLImg)
 
-let knifeone = new Enemy(340, 140, 'red', 40, 20)
-let knifetwo = new Enemy(260, 140, 'red', 40, 20)
-let knifethree = new Enemy(180, 140, 'red', 40, 20)
-let knifefour = new Enemy(100, 140, 'red', 40, 20)
-let knifefive = new Enemy(20, 140, 'red', 40, 20)
-let knifesix = new Enemy(320, 110, 'red', 40, 20)
-let knifeseven = new Enemy(240, 110, 'red', 40, 20)
-let knifeeight = new Enemy(160, 110, 'red', 40, 20)
-let knifenine = new Enemy(80, 110, 'red', 40, 20)
-let knifeten = new Enemy(0, 110, 'red', 40, 20)
+let knifeone = new Enemy(340, 140, 40, 20, knifeRImg)
+let knifetwo = new Enemy(260, 140, 40, 20, knifeRImg)
+let knifethree = new Enemy(180, 140, 40, 20, knifeRImg)
+let knifefour = new Enemy(100, 140, 40, 20, knifeRImg)
+let knifefive = new Enemy(20, 140, 40, 20, knifeRImg)
+let knifesix = new Enemy(320, 110, 40, 20, knifeLImg)
+let knifeseven = new Enemy(240, 110, 40, 20, knifeLImg)
+let knifeeight = new Enemy(160, 110, 40, 20, knifeLImg)
+let knifenine = new Enemy(80, 110, 40, 20, knifeLImg)
+let knifeten = new Enemy(0, 110, 40, 20, knifeLImg)
 
-let finish = new Crawler(0, 50, 'black', 500, 40)
+let finish = new Enemy(0, 50, 500, 40, finishImg)
 
 //movement functions
 function moveCarLeft() {
@@ -103,11 +124,11 @@ function moveCarLeft() {
 }
 
 function moveArrowRight() {
-    arrowone.x +=4
-    arrowtwo.x +=4
-    arrowthree.x +=4
-    arrowfour.x +=4
-    arrowfive.x +=4
+    arrowone.x +=3.3
+    arrowtwo.x +=3.3
+    arrowthree.x +=3.3
+    arrowfour.x +=3.3
+    arrowfive.x +=3.3
     if (arrowone.x + arrowone.width >= 385){
         arrowone.x=0
     }
@@ -128,13 +149,9 @@ function moveArrowRight() {
 
 function moveFireLeft() {
     fireone.x -=2
-    firetwo.x -=2
     firethree.x -=2
     if (fireone.x + fireone.width <= 0){
         fireone.x=385
-    }
-    if (firetwo.x + firetwo.width <= 0){
-        firetwo.x=385
     }
     if (firethree.x + firethree.width <= 0){
         firethree.x=385
@@ -148,19 +165,19 @@ function moveBallRight() {
     ballthree.x +=2
     ballfour.x +=2
     ballfive.x +=2
-    if (ballone.x + ballone.width >= 385){
+    if (ballone.x - ballone.width >= 385){
         ballone.x=0
     }
-    if (balltwo.x + balltwo.width >= 385){
+    if (balltwo.x - balltwo.width >= 385){
         balltwo.x=0
     }
-    if (ballthree.x + ballthree.width >= 385){
+    if (ballthree.x - ballthree.width >= 385){
         ballthree.x=0
     }
-    if (ballfour.x + ballfour.width >= 385){
+    if (ballfour.x - ballfour.width >= 385){
         ballfour.x=0
     }
-    if (ballfive.x + ballfive.width >= 385){
+    if (ballfive.x - ballfive.width >= 385){
         ballfive.x=0
     }
 }
@@ -194,20 +211,20 @@ function moveKnifeRight() {
     knifethree.x +=.5
     knifefour.x +=.5
     knifefive.x +=.5
-    if (knifeone.x + knifeone.width >= 385){
-        knifeone.x=0
+    if (knifeone.x - knifeone.width >= 380){
+        knifeone.x=-10
     }
-    if (knifetwo.x + knifetwo.width >= 385){
-        knifetwo.x=0
+    if (knifetwo.x - knifetwo.width >= 380){
+        knifetwo.x=-10
     }
-    if (knifethree.x + knifethree.width >= 385){
-        knifethree.x=0
+    if (knifethree.x - knifethree.width >= 380){
+        knifethree.x=-10
     }
-    if (knifefour.x + knifefour.width >= 385){
-        knifefour.x=0
+    if (knifefour.x - knifefour.width >= 380){
+        knifefour.x=-10
     }
-    if (knifefive.x + knifefive.width >= 385){
-        knifefive.x=0
+    if (knifefive.x - knifefive.width >= 380){
+        knifefive.x=-10
     }
 }
 
@@ -235,14 +252,14 @@ function moveKnifeLeft() {
 }
 
 function moveLavaTwoLeft() {
-    lavatwo.x -=.3
+    lavatwo.x -=1
     if (lavatwo.x <= 190){
         lavatwo.x=260
     }
 }
 
 function moveLavaFourLeft() {
-    lavathree.x +=.3
+    lavathree.x +=1
     if (lavathree.x >= 120){
         lavathree.x=50
     }
@@ -264,12 +281,11 @@ let gameLoop = () => {
     moveFireLeft()
     moveLavaTwoLeft()
     moveLavaFourLeft()
-    lavaone.render()
     lavatwo.render()
     lavathree.render()
+    lavaone.render()
     lavafour.render()
     fireone.render()
-    firetwo.render()
     firethree.render()
     moveBallRight()
     ballone.render()
@@ -311,7 +327,6 @@ let gameLoop = () => {
         detectHitEleven()
         detectHitTwelve()
         detectHitThirteen()
-        detectHitFourteen()
         detectHitFifteen()
         detectHitSixteen()
         detectHitSeventeen()
@@ -492,17 +507,6 @@ let detectHitThirteen = () => {
     }
     }
 
-let detectHitFourteen = () => {
-    if (
-        character.x + character.width > firetwo.x &&
-        character.x < firetwo.x + firetwo.width &&
-        character.y < firetwo.y + firetwo.height &&
-        character.y + character.height > firetwo.y
-        ) {
-            character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
-    }
-    }
 
 let detectHitFifteen = () => {
     if (
