@@ -5,6 +5,7 @@ let gameOn = document.getElementById('gameOn')
 let movementDisplay = document.getElementById('movement')
 let game = document.getElementById('game')
 let retry = document.getElementById('retrybutton')
+let cod = null
 
 //images
 let characterImg = new Image()
@@ -80,8 +81,8 @@ let lavatwo = new Enemy(260, 300,  70, 80, lavaImg)
 let lavathree = new Enemy(50, 300,  70, 80, lavaImg)
 
 
-let fireone = new Enemy(0, 260, 200, 30, fireImg)
-let firethree = new Enemy(240, 260, 200, 30, fireImg)
+let fireone = new Enemy(0, 260, 200, 20, fireImg)
+let firethree = new Enemy(240, 260, 200, 20, fireImg)
 
 let ballone = new Enemy(340, 200, 40, 20, ballImg)
 let balltwo = new Enemy(260, 200, 40, 20, ballImg)
@@ -347,7 +348,14 @@ let gameLoop = () => {
         detectHitThirtythree()
         detectHitThirtyfour()
         detectHitThirtyfive()
+    } else {
+        gameOverMessage(cod)
     }
+}
+function gameOverMessage(cause){
+    ctx.fillStyle = 'yellow'
+    ctx.font = '150px'
+        ctx.fillText(cause, game.width/2-50, game.height/2+40)
 }
 
 // detect hit
@@ -359,7 +367,7 @@ let detectHit = () => {
         character.y + character.height > carone.y
     ) {
         character.alive = false
-        document.getElementById('dead').innerText = 'You were splattered by car one'
+        cod = 'Splattered by barrel'
     }
     }
 
@@ -371,7 +379,7 @@ let detectHitTwo = () => {
         character.y + character.height > cartwo.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were splattered by car two'
+            cod = 'Splattered by barrel'
     }
     }
 
@@ -383,7 +391,7 @@ let detectHitThree = () => {
         character.y + character.height > carthree.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were splattered by car three'
+            cod = 'Splattered by barrel'
     }
     }
     
@@ -395,7 +403,7 @@ let detectHitFour = () => {
         character.y + character.height > arrowone.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow one'
+            cod = 'You were sniped by an arrow'
      }
     }
 
@@ -407,7 +415,7 @@ let detectHitFive = () => {
         character.y + character.height > arrowtwo.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'You were sniped by an arrow'
     }
     }
 
@@ -419,7 +427,7 @@ let detectHitSix = () => {
         character.y + character.height > arrowthree.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'You were sniped by an arrow'
     }
     }
 
@@ -431,7 +439,7 @@ let detectHitSix = () => {
             character.y + character.height > arrowfour.y
             ) {
                 character.alive = false
-                document.getElementById('dead').innerText = 'You were sniped by arrow two'
+                cod = 'You were sniped by an arrow'
         }
         }
 
@@ -443,7 +451,7 @@ let detectHitEight = () => {
         character.y + character.height > arrowfive.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'You were sniped by an arrow'
     }
     }
 
@@ -455,7 +463,7 @@ let detectHitNine = () => {
         character.y + character.height > lavaone.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'Lava monster eating good tonight'
     }
     }
 
@@ -467,7 +475,7 @@ let detectHitTen = () => {
         character.y + character.height > lavatwo.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'Lava monster eating good tonight'
     }
     }
 
@@ -479,7 +487,7 @@ let detectHitEleven = () => {
         character.y + character.height > lavathree.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'Lava monster eating good tonight'
     }
     }
 
@@ -491,7 +499,7 @@ let detectHitTwelve = () => {
         character.y + character.height > lavafour.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'Lava monster eating good tonight'
     }
     }
 
@@ -503,7 +511,7 @@ let detectHitThirteen = () => {
         character.y + character.height > fireone.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'Watch out for that fire'
     }
     }
 
@@ -516,7 +524,7 @@ let detectHitFifteen = () => {
         character.y + character.height > firethree.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'Watch out for that fire'
     }
     }
 
@@ -528,7 +536,7 @@ let detectHitSixteen = () => {
         character.y + character.height > ballone.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'If you can dodge an arrow you can dodge a fireball'
     }
     }
 
@@ -540,7 +548,7 @@ let detectHitSeventeen = () => {
         character.y + character.height > balltwo.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'If you can dodge an arrow you can dodge a fireball'
     }
     }
 
@@ -552,7 +560,7 @@ let detectHitEightteen = () => {
         character.y + character.height > ballthree.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'If you can dodge an arrow you can dodge a fireball'
     }
     }
 
@@ -564,7 +572,7 @@ let detectHitNineteen = () => {
         character.y + character.height > ballfour.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'If you can dodge an arrow you can dodge a fireball'
     }
     }
 
@@ -576,7 +584,7 @@ let detectHitTwenty = () => {
         character.y + character.height > ballfive.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'If you can dodge an arrow you can dodge a fireball'
     }
     }
 
@@ -588,7 +596,7 @@ let detectHitTwentyone = () => {
         character.y + character.height > ballsix.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'If you can dodge an arrow you can dodge a fireball'
     }
     }
 
@@ -600,7 +608,7 @@ let detectHitTwentytwo = () => {
         character.y + character.height > ballseven.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'If you can dodge an arrow you can dodge a fireball'
     }
     }
 
@@ -612,7 +620,7 @@ let detectHitTwentythree = () => {
         character.y + character.height > balleight.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'If you can dodge an arrow you can dodge a fireball'
     }
     }
 
@@ -624,7 +632,7 @@ let detectHitTwentyfour = () => {
         character.y + character.height > ballnine.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'If you can dodge an arrow you can dodge a fireball'
     }
     }
 
@@ -636,7 +644,7 @@ let detectHitTwentyfive = () => {
         character.y + character.height > ballten.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'If you can dodge an arrow you can dodge a fireball'
     }
     }
 
@@ -648,7 +656,7 @@ let detectHitTwentysix = () => {
         character.y + character.height > knifeone.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'Watch out for the giant knifes'
     }
     }
 
@@ -660,7 +668,7 @@ let detectHitThirtyfive = () => {
         character.y + character.height > knifetwo.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'Watch out for the giant knifes'
     }
     }
 
@@ -672,7 +680,7 @@ let detectHitTwentyseven = () => {
         character.y + character.height > knifethree.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'Watch out for the giant knifes'
     }
     }
 
@@ -684,7 +692,7 @@ let detectHitTwentyeight = () => {
         character.y + character.height > knifefour.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'Watch out for the giant knifes'
     }
     }
 
@@ -696,7 +704,7 @@ let detectHitTwentynine = () => {
         character.y + character.height > knifefive.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'Watch out for the giant knifes'
     }
     }
 
@@ -708,7 +716,7 @@ let detectHitThirty = () => {
         character.y + character.height > knifesix.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'So close... Yet so far'
     }
     }
 
@@ -720,7 +728,7 @@ let detectHitThirtyone = () => {
         character.y + character.height > knifeseven.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'So close... Yet so far'
     }
     }
 
@@ -732,7 +740,7 @@ let detectHitThirtytwo = () => {
         character.y + character.height > knifeeight.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'So close... Yet so far'
     }
     }
 
@@ -744,7 +752,7 @@ let detectHitThirtythree = () => {
         character.y + character.height > knifenine.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'So close... Yet so far'
     }
     }
 
@@ -756,7 +764,7 @@ let detectHitThirtyfour = () => {
         character.y + character.height > knifeten.y
         ) {
             character.alive = false
-            document.getElementById('dead').innerText = 'You were sniped by arrow two'
+            cod = 'So close... Yet so far'
     }
     }
 

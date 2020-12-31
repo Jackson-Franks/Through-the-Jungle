@@ -4,7 +4,12 @@
 body {
     text-align: center;
     background-image: url('file:///Users/jacksonfranks/Desktop/bbd65d4efd14552bc56ce37e1fa705f6.png');
-    background-size: auto;
+    width: 100%;
+    height: 100vh;
+    background-size: 100% 100%;
+    
+    
+    
 }
 
 #gameOn {
@@ -28,3 +33,4 @@ body {
 #retrybutton {
     text-align: center;
 }
+
