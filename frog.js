@@ -6,6 +6,12 @@ let movementDisplay = document.getElementById('movement')
 let game = document.getElementById('game')
 let retry = document.getElementById('retrybutton')
 let cod = null
+let timer = document.getElementById('timer')
+let minute = document.getElementById('minute')
+let second = document.getElementById('second')
+let minuteDisplay = 0
+let secondDisplay = 0
+
 
 //images
 let characterImg = new Image()
@@ -36,6 +42,7 @@ game.setAttribute('width', getComputedStyle(game)['width'])
 game.setAttribute('height', getComputedStyle(game)['height'])
 
 let ctx = game.getContext('2d')
+ctx.font = 'Press Start 2P' 
 
 //replace color with img, delete fillStyle, replace fillRect w drawImage
 function Crawler(x, y, width, height, img) {
@@ -81,30 +88,30 @@ let lavatwo = new Enemy(260, 300,  70, 80, lavaImg)
 let lavathree = new Enemy(50, 300,  70, 80, lavaImg)
 
 
-let fireone = new Enemy(0, 260, 200, 20, fireImg)
-let firethree = new Enemy(240, 260, 200, 20, fireImg)
+let fireone = new Enemy(0, 260, 68, 20, fireImg)
+let firethree = new Enemy(240, 260, 68, 20, fireImg)
 
-let ballone = new Enemy(340, 200, 40, 20, ballImg)
-let balltwo = new Enemy(260, 200, 40, 20, ballImg)
-let ballthree = new Enemy(180, 200, 40, 20, ballImg)
-let ballfour = new Enemy(100, 200, 40, 20, ballImg)
-let ballfive = new Enemy(20, 200, 40, 20, ballImg)
-let ballsix = new Enemy(320, 170, 40, 20, ballLImg)
-let ballseven = new Enemy(240, 170, 40, 20, ballLImg)
-let balleight = new Enemy(160, 170, 40, 20, ballLImg)
-let ballnine = new Enemy(80, 170, 40, 20, ballLImg)
-let ballten = new Enemy(0, 170, 40, 20, ballLImg)
+let ballone = new Enemy(340, 200, 35, 20, ballImg)
+let balltwo = new Enemy(260, 200, 35, 20, ballImg)
+let ballthree = new Enemy(180, 200, 35, 20, ballImg)
+let ballfour = new Enemy(100, 200, 35, 20, ballImg)
+let ballfive = new Enemy(20, 200, 35, 20, ballImg)
+let ballsix = new Enemy(320, 170, 35, 20, ballLImg)
+let ballseven = new Enemy(240, 170, 35, 20, ballLImg)
+let balleight = new Enemy(160, 170, 35, 20, ballLImg)
+let ballnine = new Enemy(80, 170, 35, 20, ballLImg)
+let ballten = new Enemy(0, 170, 35, 20, ballLImg)
 
-let knifeone = new Enemy(340, 140, 40, 20, knifeRImg)
-let knifetwo = new Enemy(260, 140, 40, 20, knifeRImg)
-let knifethree = new Enemy(180, 140, 40, 20, knifeRImg)
-let knifefour = new Enemy(100, 140, 40, 20, knifeRImg)
-let knifefive = new Enemy(20, 140, 40, 20, knifeRImg)
-let knifesix = new Enemy(320, 110, 40, 20, knifeLImg)
-let knifeseven = new Enemy(240, 110, 40, 20, knifeLImg)
-let knifeeight = new Enemy(160, 110, 40, 20, knifeLImg)
-let knifenine = new Enemy(80, 110, 40, 20, knifeLImg)
-let knifeten = new Enemy(0, 110, 40, 20, knifeLImg)
+let knifeone = new Enemy(340, 140, 35, 20, knifeRImg)
+let knifetwo = new Enemy(260, 140, 35, 20, knifeRImg)
+let knifethree = new Enemy(180, 140, 35, 20, knifeRImg)
+let knifefour = new Enemy(100, 140, 35, 20, knifeRImg)
+let knifefive = new Enemy(20, 140, 35, 20, knifeRImg)
+let knifesix = new Enemy(320, 110, 35, 20, knifeLImg)
+let knifeseven = new Enemy(240, 110, 35, 20, knifeLImg)
+let knifeeight = new Enemy(160, 110, 35, 20, knifeLImg)
+let knifenine = new Enemy(80, 110, 35, 20, knifeLImg)
+let knifeten = new Enemy(0, 110, 35, 20, knifeLImg)
 
 let finish = new Enemy(0, 50, 500, 40, finishImg)
 
@@ -348,15 +355,22 @@ let gameLoop = () => {
         detectHitThirtythree()
         detectHitThirtyfour()
         detectHitThirtyfive()
+        detectHitThirtysix()
     } else {
+        clearInterval(gameInterval)
         gameOverMessage(cod)
+        clearInterval(timerInterval)
+        
     }
 }
 function gameOverMessage(cause){
+    ctx.font = '15px Times New Roman' 
     ctx.fillStyle = 'yellow'
-    ctx.font = '150px'
-        ctx.fillText(cause, game.width/2-50, game.height/2+40)
+    
+        ctx.fillText(cause, game.width/2-180, game.height/2+40)
 }
+
+
 
 // detect hit
 let detectHit = () => {
@@ -367,7 +381,8 @@ let detectHit = () => {
         character.y + character.height > carone.y
     ) {
         character.alive = false
-        cod = 'Splattered by barrel'
+        cod = 'You were splattered by a barrel'
+        retry.style.display = 'inline-block'
     }
     }
 
@@ -379,7 +394,8 @@ let detectHitTwo = () => {
         character.y + character.height > cartwo.y
         ) {
             character.alive = false
-            cod = 'Splattered by barrel'
+            cod = 'You were splattered a by barrel'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -391,7 +407,8 @@ let detectHitThree = () => {
         character.y + character.height > carthree.y
         ) {
             character.alive = false
-            cod = 'Splattered by barrel'
+            cod = 'You were splattered by a barrel'
+            retry.style.display = 'inline-block'
     }
     }
     
@@ -404,6 +421,7 @@ let detectHitFour = () => {
         ) {
             character.alive = false
             cod = 'You were sniped by an arrow'
+            retry.style.display = 'inline-block'
      }
     }
 
@@ -416,6 +434,7 @@ let detectHitFive = () => {
         ) {
             character.alive = false
             cod = 'You were sniped by an arrow'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -428,6 +447,7 @@ let detectHitSix = () => {
         ) {
             character.alive = false
             cod = 'You were sniped by an arrow'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -440,6 +460,7 @@ let detectHitSix = () => {
             ) {
                 character.alive = false
                 cod = 'You were sniped by an arrow'
+                retry.style.display = 'inline-block'
         }
         }
 
@@ -452,6 +473,7 @@ let detectHitEight = () => {
         ) {
             character.alive = false
             cod = 'You were sniped by an arrow'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -464,6 +486,7 @@ let detectHitNine = () => {
         ) {
             character.alive = false
             cod = 'Lava monster eating good tonight'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -476,6 +499,7 @@ let detectHitTen = () => {
         ) {
             character.alive = false
             cod = 'Lava monster eating good tonight'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -488,6 +512,7 @@ let detectHitEleven = () => {
         ) {
             character.alive = false
             cod = 'Lava monster eating good tonight'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -500,6 +525,7 @@ let detectHitTwelve = () => {
         ) {
             character.alive = false
             cod = 'Lava monster eating good tonight'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -512,6 +538,7 @@ let detectHitThirteen = () => {
         ) {
             character.alive = false
             cod = 'Watch out for that fire'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -525,6 +552,7 @@ let detectHitFifteen = () => {
         ) {
             character.alive = false
             cod = 'Watch out for that fire'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -537,6 +565,7 @@ let detectHitSixteen = () => {
         ) {
             character.alive = false
             cod = 'If you can dodge an arrow you can dodge a fireball'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -549,6 +578,7 @@ let detectHitSeventeen = () => {
         ) {
             character.alive = false
             cod = 'If you can dodge an arrow you can dodge a fireball'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -561,6 +591,7 @@ let detectHitEightteen = () => {
         ) {
             character.alive = false
             cod = 'If you can dodge an arrow you can dodge a fireball'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -573,6 +604,7 @@ let detectHitNineteen = () => {
         ) {
             character.alive = false
             cod = 'If you can dodge an arrow you can dodge a fireball'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -585,6 +617,7 @@ let detectHitTwenty = () => {
         ) {
             character.alive = false
             cod = 'If you can dodge an arrow you can dodge a fireball'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -597,6 +630,7 @@ let detectHitTwentyone = () => {
         ) {
             character.alive = false
             cod = 'If you can dodge an arrow you can dodge a fireball'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -609,6 +643,7 @@ let detectHitTwentytwo = () => {
         ) {
             character.alive = false
             cod = 'If you can dodge an arrow you can dodge a fireball'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -621,6 +656,7 @@ let detectHitTwentythree = () => {
         ) {
             character.alive = false
             cod = 'If you can dodge an arrow you can dodge a fireball'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -633,6 +669,7 @@ let detectHitTwentyfour = () => {
         ) {
             character.alive = false
             cod = 'If you can dodge an arrow you can dodge a fireball'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -645,6 +682,7 @@ let detectHitTwentyfive = () => {
         ) {
             character.alive = false
             cod = 'If you can dodge an arrow you can dodge a fireball'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -657,6 +695,7 @@ let detectHitTwentysix = () => {
         ) {
             character.alive = false
             cod = 'Watch out for the giant knifes'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -669,6 +708,7 @@ let detectHitThirtyfive = () => {
         ) {
             character.alive = false
             cod = 'Watch out for the giant knifes'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -681,6 +721,7 @@ let detectHitTwentyseven = () => {
         ) {
             character.alive = false
             cod = 'Watch out for the giant knifes'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -693,6 +734,7 @@ let detectHitTwentyeight = () => {
         ) {
             character.alive = false
             cod = 'Watch out for the giant knifes'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -705,6 +747,7 @@ let detectHitTwentynine = () => {
         ) {
             character.alive = false
             cod = 'Watch out for the giant knifes'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -717,6 +760,7 @@ let detectHitThirty = () => {
         ) {
             character.alive = false
             cod = 'So close... Yet so far'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -729,6 +773,7 @@ let detectHitThirtyone = () => {
         ) {
             character.alive = false
             cod = 'So close... Yet so far'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -741,6 +786,7 @@ let detectHitThirtytwo = () => {
         ) {
             character.alive = false
             cod = 'So close... Yet so far'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -753,6 +799,7 @@ let detectHitThirtythree = () => {
         ) {
             character.alive = false
             cod = 'So close... Yet so far'
+            retry.style.display = 'inline-block'
     }
     }
 
@@ -765,8 +812,21 @@ let detectHitThirtyfour = () => {
         ) {
             character.alive = false
             cod = 'So close... Yet so far'
+            retry.style.display = 'inline-block'
     }
     }
+
+let detectHitThirtysix = () => {
+    if (
+        character.x + character.width > finish.x &&
+        character.x < finish.x + finish.width &&
+        character.y < finish.y + finish.height &&
+        character.y + character.height > finish.y
+    ){
+        character.alive = false
+        cod = `Congradulations! Your time was ${minuteDisplay} minutes and ${secondDisplay} seconds!`
+    }
+}
 
 let movementHandler = e => {
     switch(e.key) {
@@ -791,9 +851,9 @@ let stop = () => clearInterval(gameInterval)
 
 document.addEventListener('keypress', movementHandler)
 
-let gameInterval = setInterval(gameLoop, 60)
+let gameInterval 
 
-
+let timerInterval
 
 // Start button brings up game
 startButton.addEventListener('click', e => {
@@ -801,6 +861,9 @@ startButton.addEventListener('click', e => {
     startButton.style.display = 'none'
     start.style.display = 'none'
     gameOn.style.display = 'inline-block'
+    gameInterval = setInterval(gameLoop, 60)
+    timer.style.display = 'block'
+    timerInterval = setInterval(startTimer, 1000)
 })
 
 // retry after death
@@ -811,4 +874,31 @@ retry.addEventListener('click', e => {
     character.x = 175
     character.y = 700
     document.getElementById('dead').innerText = ''
+    retry.style.display = 'none'
+    gameInterval = setInterval(gameLoop, 60)
+    second.innerText = 0
+    minute.innerText = 0
+    secondDisplay = 0
+    minuteDisplay = 0
+    timerInterval = setInterval(startTimer, 1000)
 })
+
+function countSeconds(){
+    secondDisplay++
+    second.innerText = secondDisplay
+}
+
+function countMinutes(){
+    minuteDisplay++
+    minute.innerText = minuteDisplay
+}
+
+function startTimer(){
+    countSeconds()
+    if (secondDisplay >= 60){
+        secondDisplay = 0
+        second.innerText = secondDisplay
+        countMinutes()
+        
+    }
+}

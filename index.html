@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frogger</title>
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="frog.js" defer></script>
 </head>
@@ -17,7 +18,7 @@
     </div>
     
     
-    <div id="gameOn">
+    <div id="gameOn" style="font-family: Press Start 2P;">
         <canvas id="game">
             <!-- <div id="out-left"></div>
             <div id="board1"></div>
@@ -30,6 +31,10 @@
         
         <input id="retrybutton" type="button" value="Retry">
         <div id="dead"></div>
+        <div id="timer">
+            <span id="minute">00</span>:<span id="second">00</span>
+            
+        </div>
     </div>
 
 </body>
