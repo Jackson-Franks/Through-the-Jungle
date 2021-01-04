@@ -27,7 +27,7 @@ body {
     height: 750px;
     width: 380px;
     border: black;
-    
+    font-family: 'Press Start 2P', cursive;
 
 }
 
@@ -42,5 +42,33 @@ input {
 
 #timer {
     display: none;
+}
+
+#score {
+    display: none;
+    position: absolute;
+    left: 1%;
+    text-decoration: underline;
+}
+
+#scoreone {
+    display: none;
+    position: absolute;
+    left: 1%;
+    bottom: 880px;
+}
+
+#scoretwo {
+    display: none;
+    position: absolute;
+    left: 1%;
+    bottom: 860px;
+}
+
+#scorethree {
+    display: none;
+    position: absolute;
+    left: 1%;
+    bottom: 840px;
 }
 

@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', () => {
+
 // DOMS
 let startButton = document.getElementById('startButton')
 let start = document.getElementById('start')
@@ -11,6 +13,13 @@ let minute = document.getElementById('minute')
 let second = document.getElementById('second')
 let minuteDisplay = 0
 let secondDisplay = 0
+let score = document.getElementById('score')
+let scoreone = document.getElementById('scoreone')
+let scoretwo = document.getElementById('scoretwo')
+let scorethree = document.getElementById('scorethree')
+let scoreonedisplay = null
+let scoretwodisplay = null
+let scorethreedisplay = null
 
 
 //images
@@ -102,16 +111,16 @@ let balleight = new Enemy(160, 170, 35, 20, ballLImg)
 let ballnine = new Enemy(80, 170, 35, 20, ballLImg)
 let ballten = new Enemy(0, 170, 35, 20, ballLImg)
 
-let knifeone = new Enemy(340, 140, 35, 20, knifeRImg)
-let knifetwo = new Enemy(260, 140, 35, 20, knifeRImg)
-let knifethree = new Enemy(180, 140, 35, 20, knifeRImg)
-let knifefour = new Enemy(100, 140, 35, 20, knifeRImg)
-let knifefive = new Enemy(20, 140, 35, 20, knifeRImg)
-let knifesix = new Enemy(320, 110, 35, 20, knifeLImg)
-let knifeseven = new Enemy(240, 110, 35, 20, knifeLImg)
-let knifeeight = new Enemy(160, 110, 35, 20, knifeLImg)
-let knifenine = new Enemy(80, 110, 35, 20, knifeLImg)
-let knifeten = new Enemy(0, 110, 35, 20, knifeLImg)
+let knifeone = new Enemy(340, 140, 30, 20, knifeRImg)
+let knifetwo = new Enemy(260, 140, 30, 20, knifeRImg)
+let knifethree = new Enemy(180, 140, 30, 20, knifeRImg)
+let knifefour = new Enemy(100, 140, 30, 20, knifeRImg)
+let knifefive = new Enemy(20, 140, 30, 20, knifeRImg)
+let knifesix = new Enemy(320, 110, 30, 20, knifeLImg)
+let knifeseven = new Enemy(240, 110, 30, 20, knifeLImg)
+let knifeeight = new Enemy(160, 110, 30, 20, knifeLImg)
+let knifenine = new Enemy(80, 110, 30, 20, knifeLImg)
+let knifeten = new Enemy(0, 110, 30, 20, knifeLImg)
 
 let finish = new Enemy(0, 50, 500, 40, finishImg)
 
@@ -364,10 +373,10 @@ let gameLoop = () => {
     }
 }
 function gameOverMessage(cause){
-    ctx.font = '15px Times New Roman' 
+    ctx.font = '13px Fantasy'
     ctx.fillStyle = 'yellow'
+    ctx.fillText(cause, game.width/2-180, game.height/2+40)
     
-        ctx.fillText(cause, game.width/2-180, game.height/2+40)
 }
 
 
@@ -825,6 +834,16 @@ let detectHitThirtysix = () => {
     ){
         character.alive = false
         cod = `Congradulations! Your time was ${minuteDisplay} minutes and ${secondDisplay} seconds!`
+        if (scoreonedisplay > scoretwodisplay){
+            document.getElementById('scoreone').innerText=`${minuteDisplay}min. ${secondDisplay}sec.`
+        } else if (scoretwodisplay > scorethreedisplay){
+            document.getElementById('scoretwo').innerText=`${minuteDisplay}min. ${secondDisplay}sec.`
+        } else {
+            scoreonedisplay > scorethreedisplay
+            document.getElementById('scoreone').innerText=`${minuteDisplay}min. ${secondDisplay}`
+        }
+        
+        retry.style.display = 'inline-block'
     }
 }
 
@@ -860,6 +879,10 @@ startButton.addEventListener('click', e => {
     e.preventDefault()
     startButton.style.display = 'none'
     start.style.display = 'none'
+    scoreone.style.display = 'inline-block'
+    scoretwo.style.display = 'inline-block'
+    scorethree.style.display = 'inline-block'
+    score.style.display = 'inline-block'
     gameOn.style.display = 'inline-block'
     gameInterval = setInterval(gameLoop, 60)
     timer.style.display = 'block'
@@ -902,3 +925,7 @@ function startTimer(){
         
     }
 }
+
+
+
+})
