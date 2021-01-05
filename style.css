@@ -3,7 +3,7 @@
 
 body {
     text-align: center;
-    background-image: url('file:///Users/jacksonfranks/Desktop/bbd65d4efd14552bc56ce37e1fa705f6.png');
+    background-image: url('./img/bbd65d4efd14552bc56ce37e1fa705f6.png');
     width: 100%;
     height: 100vh;
     background-size: 100% 100%;
@@ -15,7 +15,7 @@ body {
 
 #gameOn {
     display: none;
-    background-image: url('file:///Users/jacksonfranks/Desktop/a200d28aace7b76d7b7e6b9d2223e348.jpg');
+    background-image: url('./img/a200d28aace7b76d7b7e6b9d2223e348.jpg');
     background-size: 380px 750px;
     width: 385px;
     
