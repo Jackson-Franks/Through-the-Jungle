@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frogger</title>
+    <title>Through the Jungle</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -13,16 +13,18 @@
 </head>
 <body>
     <div id="start">
+        <h1>Through the Jungle</h1>
         <aside id="top-middle"><h2>Instructions:</h2></aside>
         <aside id="intro-text"><h3>Traverse across the treacherous terrain to reach the finish!</h3></aside>
         <aside id="movement-keys"><h3>Use W, A, S, D to move forward, left, back, and right</h3></aside>
         <input id="startButton" type="button" value="Start Game">
     </div>
+    <div>
     <h4 id="score">Highscore:</h4>
-    <h4 id="scoreone">1.</h4>
-    <h4 id="scoretwo">2.</h4>
-    <h4 id="scorethree">3.</h4>
-    
+    <h5>1. <span id="scoreone"></span></h5>
+    <h5>2. <span id="scoretwo"></span></h5>
+    <h5>3. <span id="scorethree"></span></h5>
+    </div>
     
     <div id="gameOn" style="font-family: Press Start 2P;">
         <canvas id="game">

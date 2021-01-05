@@ -53,22 +53,26 @@ input {
 
 #scoreone {
     display: none;
-    position: absolute;
-    left: 1%;
-    bottom: 880px;
+    
 }
 
 #scoretwo {
     display: none;
-    position: absolute;
-    left: 1%;
-    bottom: 860px;
+    
 }
 
 #scorethree {
     display: none;
-    position: absolute;
-    left: 1%;
-    bottom: 840px;
+    
+    
 }
 
+h5 {
+    display: none;
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+}

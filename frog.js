@@ -116,11 +116,11 @@ let knifetwo = new Enemy(260, 140, 30, 20, knifeRImg)
 let knifethree = new Enemy(180, 140, 30, 20, knifeRImg)
 let knifefour = new Enemy(100, 140, 30, 20, knifeRImg)
 let knifefive = new Enemy(20, 140, 30, 20, knifeRImg)
-let knifesix = new Enemy(320, 110, 30, 20, knifeLImg)
-let knifeseven = new Enemy(240, 110, 30, 20, knifeLImg)
-let knifeeight = new Enemy(160, 110, 30, 20, knifeLImg)
-let knifenine = new Enemy(80, 110, 30, 20, knifeLImg)
-let knifeten = new Enemy(0, 110, 30, 20, knifeLImg)
+let knifesix = new Enemy(320, 100, 30, 20, knifeLImg)
+let knifeseven = new Enemy(240, 100, 30, 20, knifeLImg)
+let knifeeight = new Enemy(160, 100, 30, 20, knifeLImg)
+let knifenine = new Enemy(80, 100, 30, 20, knifeLImg)
+let knifeten = new Enemy(0, 100, 30, 20, knifeLImg)
 
 let finish = new Enemy(0, 50, 500, 40, finishImg)
 
@@ -376,7 +376,6 @@ function gameOverMessage(cause){
     ctx.font = '13px Fantasy'
     ctx.fillStyle = 'yellow'
     ctx.fillText(cause, game.width/2-180, game.height/2+40)
-    
 }
 
 
@@ -393,7 +392,8 @@ let detectHit = () => {
         cod = 'You were splattered by a barrel'
         retry.style.display = 'inline-block'
     }
-    }
+}
+    
 
 let detectHitTwo = () => {
     if (
@@ -406,7 +406,8 @@ let detectHitTwo = () => {
             cod = 'You were splattered a by barrel'
             retry.style.display = 'inline-block'
     }
-    }
+}
+    
 
 let detectHitThree = () => {
     if (
@@ -419,7 +420,7 @@ let detectHitThree = () => {
             cod = 'You were splattered by a barrel'
             retry.style.display = 'inline-block'
     }
-    }
+}
     
 let detectHitFour = () => {
     if (
@@ -834,18 +835,46 @@ let detectHitThirtysix = () => {
     ){
         character.alive = false
         cod = `Congradulations! Your time was ${minuteDisplay} minutes and ${secondDisplay} seconds!`
-        if (scoreonedisplay > scoretwodisplay){
-            document.getElementById('scoreone').innerText=`${minuteDisplay}min. ${secondDisplay}sec.`
-        } else if (scoretwodisplay > scorethreedisplay){
-            document.getElementById('scoretwo').innerText=`${minuteDisplay}min. ${secondDisplay}sec.`
+        
+        // highscore
+        let currentTime = minuteDisplay*60 + secondDisplay
+        
+        console.log(currentTime)
+        console.log(scoreone)
+
+        if (currentTime < scoreonedisplay){
+            console.log('highscore')
+            scorethreedisplay = scoretwodisplay
+            scoretwodisplay = scoreonedisplay
+            scoreonedisplay = currentTime
+            scoreone.innerText = scoreonedisplay
+            scoretwo.innerText = scoretwodisplay
+            scorethree.innerText = scorethreedisplay
+        
+        } else if (currentTime < scoretwodisplay){
+            scorethreedisplay = scoretwodisplay
+            scoretwodisplay = scoreonedisplay
+            scoretwodisplay = currentTime
+            scoreone.innerText = scoreonedisplay
+            scoretwo.innerText = scoretwodisplay
+            scorethree.innerText = scorethreedisplay
+
         } else {
-            scoreonedisplay > scorethreedisplay
-            document.getElementById('scoreone').innerText=`${minuteDisplay}min. ${secondDisplay}`
-        }
+            currentTime < scorethreedisplay
+            scorethreedisplay = scoreonedisplay
+            scoretwoisplay = scorethreedisplay
+            scorethreedisplay = currentTime
+            scoreone.innerText = scoreonedisplay
+            scoretwo.innerText = scoretwodisplay
+            scorethree.innerText = scorethreedisplay
+        } 
+    }
+
         
         retry.style.display = 'inline-block'
     }
-}
+    
+
 
 let movementHandler = e => {
     switch(e.key) {
@@ -860,6 +889,9 @@ let movementHandler = e => {
             break
         case 'd':
             character.x += 10
+            break
+        case 'f':
+            detectHitThirtysix()
             break
         default:
             console.log('key has no purpose')
@@ -882,6 +914,9 @@ startButton.addEventListener('click', e => {
     scoreone.style.display = 'inline-block'
     scoretwo.style.display = 'inline-block'
     scorethree.style.display = 'inline-block'
+    document.querySelectorAll('h5').forEach(element => {
+        element.style.display = 'inline-block'
+    })
     score.style.display = 'inline-block'
     gameOn.style.display = 'inline-block'
     gameInterval = setInterval(gameLoop, 60)
@@ -906,6 +941,7 @@ retry.addEventListener('click', e => {
     timerInterval = setInterval(startTimer, 1000)
 })
 
+// timer
 function countSeconds(){
     secondDisplay++
     second.innerText = secondDisplay
